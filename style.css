@@ -1,0 +1,83 @@
+.radio{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: 2px solid rgb(156, 155, 155);
+    position: relative;
+
+    appearance: none; 
+   -webkit-appearance: none;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+/* Custom color when selected */
+.radio:checked {
+    border-color: hsl(169, 82%, 27%);
+  }
+
+  .radio:checked::before {
+    content: '';
+    display: block;
+    width: 9px; /* Size of the inner circle (smaller than outer circle) */
+    height: 9px;
+    background-color: hsl(169, 82%, 27%); /* Inner circle color */
+    border-radius: 5px; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  
+  /* Create an inner circle for the checked radio */
+  .radio:checked::after {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 0px;
+    background-color: #f2f3f2;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .active {
+    border: 1px solid hsl(169, 82%, 27%);
+  }
+
+  .pledge-container {
+    margin-top: 1.125rem;
+  }
+
+  .pledge-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.75rem;
+  }
+
+  .divider {
+    border: 1px solid #d1d1d1;
+  }
+
+  .right-side {
+    display: flex;
+    gap: 0.15rem;
+  }
+
+  .pledge-amount {
+    padding: 0.75rem;
+    border: 1px solid #d1d1d1;
+    border-radius: 24px;
+    width: 50%;
+  }
+
+  .pledge-btn {
+    background-color: #3cb4ac;
+    color: #fff;
+    padding: 0.75rem;
+    border-radius: 24px;
+    width: 50%;
+  }
