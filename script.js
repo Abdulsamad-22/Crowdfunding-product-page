@@ -1,11 +1,32 @@
-const backProjectBtn = document.querySelector('.js-btn');
+const backProjectBtn = document.getElementById('js-btn');
+const closeModalBtn = document.getElementById('close-modal');
+const modal = document.getElementById('modal');
+const overlay = document.getElementById('overlay');
 
-const modal = `
+const menu = document.getElementById('menu');
+const nav = document.getElementById('nav-item');
 
-`;
+menu.addEventListener('click', () => {
+    nav.classList.toggle('hidden');
+    nav.classList.toggle('flex');
+
+    if (nav.classList.contains('hidden')) {
+        menu.src = 'images/icon-hamburger.svg';
+    } else {
+        menu.src = 'images/icon-close-menu.svg'
+    }
+});
 
 backProjectBtn.addEventListener('click', () => {
+    modal.classList.remove('hidden');
     console.log('open modal');
+    overlay.classList.remove('hidden');
+});
+
+closeModalBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    overlay.classList.add('hidden');
+    console.log('close modal');
 });
 
 function makePledge() {
@@ -46,3 +67,30 @@ function makePledge() {
 }
 
 makePledge();
+
+const image = document.getElementById('bg-image');
+function resizeWindow() {
+    if (window.innerWidth <= 768) {
+        if (image) {
+            image.src = 'images/image-hero-mobile.jpg';
+            console.log('mobile');
+        }    
+    } else {
+        if (image) {
+            image.src = 'images/image-hero-desktop.jpg';
+            console.log('desktop')
+        } 
+    }
+}
+
+if (image) {
+    resizeWindow();
+
+    let resizeTimer;
+    window.addEventListener('resize', () => { 
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(resizeWindow, 250)
+    });
+} else {
+    console.log('background not found');
+}
