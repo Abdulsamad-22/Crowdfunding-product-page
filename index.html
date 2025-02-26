@@ -88,13 +88,13 @@
       <div class="flex flex-col items-center text-center md:flex-row md:justify-evenly w-full mb-5">
         <div class="border-b-2 md:border-b-0 md:border-r-2 border-[#c4c4c4] p-4 w-full md:w-1/3">
           <p class="text-[#929090] text-sm">
-            <span class="text-3xl text-[#000] font-bold">$89,914</span><br>of $100,000 backed
+            <span id="amount-pledged" class="text-3xl text-[#000] font-bold">$89,914</span><br>of $100,000 backed
           </p>
         </div>
         
         <div class="border-b-2 md:border-b-0 md:border-r-2 border-[#c4c4c4] p-4 w-full md:w-1/3">
           <p class="text-[#929090] text-sm">
-            <span class="text-3xl text-[#000] font-bold">5,007</span><br>total backers
+            <span id="nos-backers" class="text-3xl text-[#000] font-bold">5,007</span><br>total backers
           </p>
         </div> 
   
@@ -150,7 +150,7 @@
             <span class="font-bold text-[#000] text-[1.75rem]">101</span>left
           </p>
 
-          <button class="rounded-full text-[#fff] bg-[#3cb4ac] p-3 px-2 md:px-7 w-1/2 md:w-auto text-sm hover:bg-[#147b74] transition duration-300 cursor-pointer">
+          <button id="reward-btn" class="rounded-full text-[#fff] bg-[#3cb4ac] p-3 px-2 md:px-7 w-1/2 md:w-auto text-sm hover:bg-[#147b74] transition duration-300 cursor-pointer">
             Select Reward
           </button>
         </div>
@@ -177,7 +177,7 @@
             <span class="font-bold text-[#000] text-[1.75rem]">64</span>left
           </p>
 
-          <button class="rounded-full text-[#fff] bg-[#3cb4ac] p-3 px-2 md:px-7 w-1/2 md:w-auto text-sm hover:bg-[#147b74] transition duration-300 cursor-pointer">
+          <button id="" class="rounded-full text-[#fff] bg-[#3cb4ac] p-3 px-2 md:px-7 w-1/2 md:w-auto text-sm hover:bg-[#147b74] transition duration-300 cursor-pointer">
             Select Reward
           </button>
         </div>
@@ -245,6 +245,7 @@
              you will be signed up to receive product updates via email.
           </p>
         </div>
+        <div class="newContainer"></div>
       </div>
 
       <div class="pledge-container border-2 border-gray-200 rounded-2xl p-6">
@@ -281,6 +282,7 @@
             </p>
           </div>
         </div>
+        <div class="newContainer"></div>
       </div>
 
       <div class="pledge-container border-2 border-gray-200 rounded-2xl p-6">
@@ -317,6 +319,7 @@
             </p>
           </div>
         </div>
+        <div class="newContainer"></div>
       </div>
 
       <div class="pledge-container border-2 border-gray-200 rounded-2xl p-6">
@@ -352,41 +355,29 @@
             </p>
           </div>
         </div>
+        <div class="newContainer"></div>
       </div>
     </section>
 
+    <section id="thankYou-page" class="w-full md:w-1/3 hidden flex flex-col items-center rounded-2xl gap-3 bg-[#fff] px-7 md:p-8 absolute top-[12%] z-20">
+      <img src="images/icon-check.svg">
 
-  <!-- Selection modal start -->
-
-  <!-- Selected pledge start -->
-  Enter your pledge
-  $25
-  Continue
-  <!-- Selected pledge end -->
-
-  <!-- Selected pledge start -->
-  Enter your pledge
-  $75
-  Continue
-  <!-- Selected pledge end -->
+      <div class="text-center">
+        <h2 class="font-bold text-2xl">
+          Thanks for your support!
+        </h2>
   
+        <p class="text-[#c4c4c4]">
+          Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get
+          an email once our campaign is completed.
+        </p>
+      </div>
 
-  <!-- Selected pledge  start -->
-  Enter your pledge
-  $200
-  Continue
-  <!-- Selected pledge end -->
+      <button id="gotIt-btn" class="bg-[#3cb4ac] text-[#fff] rounded-full px-6 py-2">
+        Got it!
+      </button>
+    </section>
 
-  <!-- Selection modal end -->
-
-  <!-- Success modal start -->
-
-  Thanks for your support!
-  Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get
-  an email once our campaign is completed.
-  Got it!
-
-  <!-- Success modal end -->
    <script src="script.js"></script>
 </body>
 </html>
