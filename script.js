@@ -37,61 +37,36 @@ closeModalBtn.addEventListener('click', () => {
     const pledgeContainer = document.querySelectorAll(".pledge-container");
 
     pledgeContainer.forEach(cont => cont.classList.remove("active"));
-
-    container.forEach((cont) => {
-        cont.classList.remove("active");
-        const pledgeSection = cont.querySelector(".pledge-section");
-        if (pledgeSection) {
-            pledgeSection.remove(); // Remove any added section
+    
+    container.forEach(cont => {
+        if (cont) {
+            cont.classList.add("hidden"); // Remove any added section
         }
     });
 });
 
-let html = '';
-
 function makePledge() {
-    html += `
-        <div class="pledge-section">
-            <hr class="divider">
-            <div class="new">
-                <p>
-                    Enter your pledge
-                </p>
-
-                <div class="right-side">
-                    <input class="pledge-amount" value="25" type="number" name="amount">
-                    <button class="pledge-btn">
-                        Continue
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-
     const radio = document.querySelectorAll('.js-radio');
     const container = document.querySelectorAll('.newContainer');
     const pledgeContainer = document.querySelectorAll(".pledge-container");
 
     radio.forEach((btn, index) => {
         btn.addEventListener('click', () => {
+            const parentContainer = btn.closest(".pledge-container");
+
             container.forEach((cont) => {
-                cont.classList.remove("active");
-                const pledgeSection = cont.querySelector(".pledge-section");
-
-                if (pledgeSection) {
-                    console.log('remove');
-                    pledgeSection.remove();
-                }
-
+                //cont.classList.remove("active");
+                cont.classList.add("hidden");
             });
+
+            const pledgeSection = parentContainer.querySelector(".newContainer");
+
+            if (pledgeSection) {
+                pledgeSection.classList.remove('hidden');
+            }
 
             if (btn.checked && container[index]) {
                 pledgeContainer[index].classList.add('active');
-
-                if (!container[index].querySelector(".pledge-section")) {
-                    container[index].innerHTML = html;
-                }
-
                 backThisProject();
             }
         });
@@ -100,66 +75,128 @@ function makePledge() {
 
 makePledge();
 
+let total = 0;
 function backThisProject() {
-   setTimeout( () => {
-        const pledgeBtns = document.querySelectorAll('.pledge-btn');
-        const pledgeAmt = document.querySelector('.pledge-amount');
-        const amountValue = pledgeAmt.value.trim();
-
-        if (pledgeBtns.length > 0) {
-            pledgeBtns.forEach(btn => {
-                btn.addEventListener('click', (event) => {
-                    const index = [...pledgeBtns].indexOf(event.target);
-
-                    console.log(`Clicked index: ${index}`);
-                    if (index === 0) {
-                        console.log('pledge');
-                        //collectInput();
-                        modal.classList.add('hidden');
-                        overlay.classList.add('hidden');
-                    } else if (index === 1) {
-                        console.error("Pledge buttons not found!");
-                        console.log('no button found');
-                    } else if (index === 2) {
-                        console.error("Pledge buttons not found!3");
-                        console.log('no button found');
-                    }
-                });
-            });
-        }
-   }, 100);
-}
-
-function collectInput() {
     let totalAmount = document.getElementById('amount-pledged');
     let backers = document.getElementById('nos-backers');
     let amountBacked = Number(totalAmount.textContent.replace(/[^0-9.]/g, ""));
     let nosBacked = Number(backers.textContent.replace(/[^0-9.]/g, ""));
 
-    const pledgeAmt = document.querySelector('.pledge-amount');
-    const amountValue = Number(pledgeAmt.value.trim());
-    
-    if (amountValue) {
-        amountBacked += amountValue;
-        nosBacked +=1;
+   setTimeout( () => {
+    const pledgeBtns = document.querySelectorAll('.pledge-btn');
 
-        console.log(amountBacked);
-        console.log(nosBacked);
-        totalAmount.textContent = amountBacked;
-        backers.textContent = nosBacked;
+        if (pledgeBtns.length > 0) {
+            pledgeBtns.forEach(btn => {
+                btn.addEventListener('click', (event) => {
+                    //const index = [...pledgeBtns].indexOf(event.target);
+                    const parentContainer = btn.closest(".pledge-container");
+                    const input = parentContainer.querySelector('.pledge-amount');
+                    const progressBar = document.getElementById('progress-bar');
+
+                    if (input) {
+                        const amountValue = Number(input.value.trim());
+
+                        if (!isNaN(amountValue) && amountValue > 0) {
+                            //trackingProgressBar(amountValue);
+                            amountBacked += amountValue;
+                            nosBacked += 1;
+
+                            console.log("Total Amount Backed:", amountBacked);
+                            console.log("Total Backers:", nosBacked);
+
+                            totalAmount.textContent = helperFunction(amountBacked);
+                            backers.textContent = helperFunction(nosBacked);
+
+                            input.value = input.defaultValue;
+                        } else {
+                            console.log('Invalid input or empty value');
+                        }
+
+                        const progressBar = document.getElementById('progress-bar');
+                        if (input === '') {
+                            console.log('no additional backer');
+                        } else {
+                            //trackingProgressBar(amountValue);
+                            const progress = 100 * (amountValue / 100000).toFixed(4);
+                            total += progress;
+                            console.log(total);
+                            
+                            console.log(progressBar);
+                            if (total > 100) total = 100; // Prevent exceeding 100%
+                            progressBar.style.width = `${total}%`;
+                        }
+
+                    } else {
+                        console.log('no matching input found');
+                    }
+
+                    modal.classList.add('hidden');
+                    overlay.classList.add('hidden');
+                    const radio = document.querySelectorAll('.js-radio');
+                    radio.forEach(radio => {
+                        radio.checked = false;
+                    });
+
+                    const pledgeContainer = document.querySelectorAll(".pledge-container");
+                    pledgeContainer.forEach(cont => cont.classList.remove("active"));
+
+                    const container = document.querySelectorAll('.newContainer');
+                    
+                    container.forEach(cont => {
+                        if (cont) {
+                            cont.classList.add("hidden"); // Remove any added section
+                        }
+                    });
+                }, { once: true });
+            });
+        } else {
+            console.log('no matching button found');
+        }
+   }, 100);
+}
+
+const progressBar = document.getElementById('progress-bar');
+function trackingProgressBar(amountValue) {
+    if (!progressBar) {
+        console.error("Progress bar element not found!");
+        return;
     }
+
+    if (input === '') {
+        console.log('no additional backer');
+    } else {
+        //trackingProgressBar(amountValue);
+        const progress = 100 * (amountValue / 100000).toFixed(4);
+        total += progress;
+        console.log(total);
+        
+        console.log(progressBar);
+        if (total > 100) total = 100; // Prevent exceeding 100%
+        progressBar.style.width = `${total}%`;
+    }
+
+    /*
+    const progress = 100 * (amountValue / 100000).toFixed(4);
+    total += progress;
+    console.log(total);
+    
+    console.log(progressBar);
+    if (total > 100) total = 100; // Prevent exceeding 100%
+    progressBar.style.width = `${total}%`;
+    */
 }
 
 const gotItBtn = document.getElementById('gotIt-btn');
 const thankYou = document.getElementById('thankYou-page');
-const rewardButtons = document.getElementById('reward-btn');
+const rewardButtons = document.querySelectorAll('.reward-btn');
 
-rewardButtons.addEventListener('click', (event) => {
+rewardButtons.forEach(btn => {
+    btn.addEventListener('click', (event) => {
         console.log('reward');
         thankYou.classList.remove('hidden');
         overlay.classList.remove('hidden');
-        collectInput();
         console.log('Clicked button:', event.target);
+    });
 });
 
 
@@ -171,6 +208,29 @@ setTimeout(() => {
         });
     }
 }, 100);
+
+function helperFunction(result) {
+    const noBeforeDecimal = `${result}`.indexOf(".");
+    const wholeNumber = 
+        noBeforeDecimal  !== -1 
+            ?result.slice(0, noBeforeDecimal)
+            : result;
+
+    const decimalNumber = 
+        noBeforeDecimal !== -1 ?
+        result.slice(noBeforeDecimal) : '';
+
+    let str = wholeNumber.toString();
+    const groups = [];
+    while(str.length > 3) {
+        groups.unshift(str.slice(-3));
+        str = str.slice(0, -3);
+    }
+
+    groups.unshift(str);
+    str = groups.join(',');
+    return str + decimalNumber;
+}
 
 const image = document.getElementById('bg-image');
 function resizeWindow() {

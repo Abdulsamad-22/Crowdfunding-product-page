@@ -107,7 +107,7 @@
 
       <div class="relative ">
         <hr class="border-5 border-[#f0f0f0] rounded-full">
-        <hr class="border-5 border-[#3cb4ac] absolute top-0 left-0 rounded-full w-[70%]">
+        <hr id="progress-bar" class="border-5 border-[#3cb4ac] absolute top-0 left-0 rounded-full w-[0%]">
       </div>
     </div>
 
@@ -150,7 +150,7 @@
             <span class="font-bold text-[#000] text-[1.75rem]">101</span>left
           </p>
 
-          <button id="reward-btn" class="rounded-full text-[#fff] bg-[#3cb4ac] p-3 px-2 md:px-7 w-1/2 md:w-auto text-sm hover:bg-[#147b74] transition duration-300 cursor-pointer">
+          <button id="reward-btn" class="reward-btn rounded-full text-[#fff] bg-[#3cb4ac] p-3 px-2 md:px-7 w-1/2 md:w-auto text-sm hover:bg-[#147b74] transition duration-300 cursor-pointer">
             Select Reward
           </button>
         </div>
@@ -177,7 +177,7 @@
             <span class="font-bold text-[#000] text-[1.75rem]">64</span>left
           </p>
 
-          <button id="" class="rounded-full text-[#fff] bg-[#3cb4ac] p-3 px-2 md:px-7 w-1/2 md:w-auto text-sm hover:bg-[#147b74] transition duration-300 cursor-pointer">
+          <button id="" class="reward-btn rounded-full text-[#fff] bg-[#3cb4ac] p-3 px-2 md:px-7 w-1/2 md:w-auto text-sm hover:bg-[#147b74] transition duration-300 cursor-pointer">
             Select Reward
           </button>
         </div>
@@ -245,7 +245,24 @@
              you will be signed up to receive product updates via email.
           </p>
         </div>
-        <div class="newContainer"></div>
+
+        <div class="newContainer hidden">
+          <div class="pledge-section mt-3">
+            <hr class="divider border-2 border-[#d1d1d1]">
+            <div class="new flex flex-col items-center md:flex-row justify-between mt-3">
+                <p>
+                    Enter your pledge
+                </p>
+
+                <div class="right-side flex items-center justify-end gap-2">
+                    <input class="pledge-amount px-[0.5rem] py-[0.75rem] rounded-full w-[30%] border-2 border-[#c4c4c4]" value="" type="number" name="amount">
+                    <button class="pledge-btn bg-[#3cb4ac] text-[#fff] px-[0.5rem] py-[0.75rem] rounded-full w-[30%]">
+                        Continue
+                    </button>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="pledge-container border-2 border-gray-200 rounded-2xl p-6">
@@ -282,7 +299,24 @@
             </p>
           </div>
         </div>
-        <div class="newContainer"></div>
+
+        <div class="newContainer hidden">
+          <div class="pledge-section mt-3">
+            <hr class="divider border-2 border-[#d1d1d1]">
+            <div class="new flex flex-col md:flex-row items-center justify-between mt-3">
+                <p>
+                    Enter your pledge
+                </p>
+
+                <div class="right-side flex justify-end items-center gap-2">
+                    <input class="pledge-amount px-[0.5rem] py-[0.75rem] rounded-full w-[30%] border-2 border-[#c4c4c4]" value="25" type="number" name="amount">
+                    <button class="pledge-btn bg-[#3cb4ac] text-[#fff] px-[0.5rem] py-[0.75rem] rounded-full w-[30%]">
+                        Continue
+                    </button>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="pledge-container border-2 border-gray-200 rounded-2xl p-6">
@@ -319,7 +353,24 @@
             </p>
           </div>
         </div>
-        <div class="newContainer"></div>
+
+        <div class="newContainer hidden">
+          <div class="pledge-section mt-3">
+            <hr class="divider border-2 border-[#d1d1d1]">
+            <div class="new flex flex-col md:flex-row items-center justify-between mt-3">
+                <p>
+                    Enter your pledge
+                </p>
+
+                <div class="right-side flex justify-end items-center gap-2">
+                    <input class="pledge-amount px-[0.5rem] py-[0.75rem] rounded-full w-[30%] border-2 border-[#c4c4c4]" value="64" type="number" name="amount">
+                    <button class="pledge-btn bg-[#3cb4ac] text-[#fff] px-[0.5rem] py-[0.75rem] rounded-full w-[30%]">
+                        Continue
+                    </button>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="pledge-container border-2 border-gray-200 rounded-2xl p-6">
@@ -355,7 +406,24 @@
             </p>
           </div>
         </div>
-        <div class="newContainer"></div>
+
+        <div class="newContainer hidden">
+          <div class="pledge-section mt-3">
+            <hr class="divider border-2 border-[#d1d1d1]">
+            <div class="new flex flex-col md:flex-row items-center justify-between mt-3">
+                <p>
+                    Enter your pledge
+                </p>
+
+                <div class="right-side flex justify-end items-center gap-2">
+                    <input class="pledge-amount px-[0.5rem] py-[0.75rem] rounded-full w-[30%] border-2 border-[#c4c4c4]" value="200" type="number" name="amount">
+                    <button class="pledge-btn bg-[#3cb4ac] text-[#fff] px-[0.5rem] py-[0.75rem] rounded-full w-[30%]">
+                        Continue
+                    </button>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
