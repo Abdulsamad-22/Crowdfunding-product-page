@@ -12,10 +12,30 @@ menu.addEventListener('click', () => {
 
     if (nav.classList.contains('hidden')) {
         menu.src = 'images/icon-hamburger.svg';
+        overlay.classList.add('hidden');
     } else {
         menu.src = 'images/icon-close-menu.svg'
+        overlay.classList.remove('hidden');
     }
 });
+
+const bookMarkBtn = document.getElementById('bookMarkBtn');
+const bookmarkText = document.querySelector('.bookmark-text');
+const bookmarkIcon = document.getElementById("bookmarkIcon");
+const iconContainer = document.getElementById('bookmarkContainer');
+
+bookMarkBtn.addEventListener("click", () => {
+    bookmarkText.innerText = bookmarkText.innerText === "Bookmark" ? "Bookmarked" : "Bookmark";
+    bookmarkText.classList.toggle("text-[#147b74]");
+
+    // Toggle icon color
+    bookmarkIcon.classList.toggle("fill-white"); 
+    bookmarkIcon.classList.toggle("fill-[#c4c4c4]");
+
+    // Toggle icon container color
+    iconContainer.classList.toggle("bg-[#147b74]")
+});
+
 
 backProjectBtn.addEventListener('click', () => {
     modal.classList.remove('hidden');
@@ -51,11 +71,14 @@ function makePledge() {
     const pledgeContainer = document.querySelectorAll(".pledge-container");
 
     radio.forEach((btn, index) => {
+        if (index === 3) {
+            return;
+        }
+
         btn.addEventListener('click', () => {
             const parentContainer = btn.closest(".pledge-container");
 
             container.forEach((cont) => {
-                //cont.classList.remove("active");
                 cont.classList.add("hidden");
             });
 
@@ -68,14 +91,25 @@ function makePledge() {
             if (btn.checked && container[index]) {
                 pledgeContainer[index].classList.add('active');
                 backThisProject();
+                setReward();
+                hasExecuted = true;
             }
         });
+
+        if (pledgeContainer[index]) {
+            pledgeContainer[index].addEventListener('click', () => {
+                pledgeContainer.forEach((cont) => {
+                    cont.classList.remove("active");
+                    pledgeContainer[index].classList.add('active');
+                    btn.click();
+                });
+            });
+        }
     });
 }
 
 makePledge();
 
-let total = 0;
 function backThisProject() {
     let totalAmount = document.getElementById('amount-pledged');
     let backers = document.getElementById('nos-backers');
@@ -91,20 +125,19 @@ function backThisProject() {
                     //const index = [...pledgeBtns].indexOf(event.target);
                     const parentContainer = btn.closest(".pledge-container");
                     const input = parentContainer.querySelector('.pledge-amount');
-                    const progressBar = document.getElementById('progress-bar');
+
 
                     if (input) {
                         const amountValue = Number(input.value.trim());
 
                         if (!isNaN(amountValue) && amountValue > 0) {
-                            //trackingProgressBar(amountValue);
                             amountBacked += amountValue;
                             nosBacked += 1;
 
                             console.log("Total Amount Backed:", amountBacked);
                             console.log("Total Backers:", nosBacked);
 
-                            totalAmount.textContent = helperFunction(amountBacked);
+                            totalAmount.textContent = `$${helperFunction(amountBacked)}`;
                             backers.textContent = helperFunction(nosBacked);
 
                             input.value = input.defaultValue;
@@ -112,19 +145,7 @@ function backThisProject() {
                             console.log('Invalid input or empty value');
                         }
 
-                        const progressBar = document.getElementById('progress-bar');
-                        if (input === '') {
-                            console.log('no additional backer');
-                        } else {
-                            //trackingProgressBar(amountValue);
-                            const progress = 100 * (amountValue / 100000).toFixed(4);
-                            total += progress;
-                            console.log(total);
-                            
-                            console.log(progressBar);
-                            if (total > 100) total = 100; // Prevent exceeding 100%
-                            progressBar.style.width = `${total}%`;
-                        }
+                        trackingProgressBar(input, amountValue);
 
                     } else {
                         console.log('no matching input found');
@@ -156,16 +177,22 @@ function backThisProject() {
 }
 
 const progressBar = document.getElementById('progress-bar');
-function trackingProgressBar(amountValue) {
+let total = 0;
+
+function trackingProgressBar(input, amountValue) {
     if (!progressBar) {
         console.error("Progress bar element not found!");
         return;
     }
 
+    // if (amountBacked > 100000) {
+    //     console.log('complete');
+    //     return;
+    // }
+
     if (input === '') {
         console.log('no additional backer');
     } else {
-        //trackingProgressBar(amountValue);
         const progress = 100 * (amountValue / 100000).toFixed(4);
         total += progress;
         console.log(total);
@@ -175,42 +202,56 @@ function trackingProgressBar(amountValue) {
         progressBar.style.width = `${total}%`;
     }
 
-    /*
-    const progress = 100 * (amountValue / 100000).toFixed(4);
-    total += progress;
-    console.log(total);
-    
-    console.log(progressBar);
-    if (total > 100) total = 100; // Prevent exceeding 100%
-    progressBar.style.width = `${total}%`;
-    */
+    if (total === 0) {
+        progressBar.classList.add('hidden');
+    } else if (total > 0) {
+        progressBar.classList.remove('hidden');
+    }
 }
 
-const gotItBtn = document.getElementById('gotIt-btn');
-const thankYou = document.getElementById('thankYou-page');
-const rewardButtons = document.querySelectorAll('.reward-btn');
+function setReward() {
+    const gotItBtn = document.getElementById('gotIt-btn');
+    const thankYou = document.getElementById('thankYou-page');
+    const rewardButtons = document.querySelectorAll('.reward-btn');
 
-rewardButtons.forEach(btn => {
-    btn.addEventListener('click', (event) => {
-        console.log('reward');
-        thankYou.classList.remove('hidden');
-        overlay.classList.remove('hidden');
-        console.log('Clicked button:', event.target);
-    });
-});
+    let hasExecuted = false;
 
-
-setTimeout(() => {
-    if (!gotItBtn.length) {
-        gotItBtn.addEventListener('click', () => {
-            thankYou.classList.add('hidden');
-            overlay.classList.add('hidden');
+    rewardButtons.forEach(btn => {
+        btn.addEventListener('click', (event) => {
+            thankYou.classList.remove('hidden');
+            overlay.classList.remove('hidden');
+            console.log('Clicked button:', event.target);
         });
-    }
-}, 100);
+    });
+
+
+    setTimeout(() => {
+        if (!gotItBtn.length) {
+            gotItBtn.addEventListener('click', () => {
+                thankYou.classList.add('hidden');
+                overlay.classList.add('hidden');
+            });
+        }
+    }, 100);
+
+    if (!backThisProject) {
+        rewardButtons.forEach(btn => {
+            btn.removeEventListener('click', setReward);
+        });
+    }  else if (backThisProject && !hasExecuted) {
+        rewardButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                setReward();
+                hasExecuted = true;
+            });
+        });
+        console.log('leave');
+        //setReward();
+    } 
+}
 
 function helperFunction(result) {
-    const noBeforeDecimal = `${result}`.indexOf(".");
+    const noBeforeDecimal = `${result}`.indexOf('.');
     const wholeNumber = 
         noBeforeDecimal  !== -1 
             ?result.slice(0, noBeforeDecimal)

@@ -15,7 +15,7 @@
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
     h1{
-      color: #00000033;
+      color: #3cb4ace8;
     }
   </style>
 
@@ -32,24 +32,23 @@
       <img id="bg-image" src="images/image-hero-desktop.jpg">
     </div>
 
-    <div class="absolute top-0 flex justify-between w-full px-8 py-4">
+    <div class="absolute top-0 flex justify-between w-full px-8 md:py-4 py-8  z-20 md:z-0">
       <div>
         <img src="images/logo.svg">
       </div>
 
       <div>
-        <nav id="nav-item" class="flex flex-col md:flex-row md:gap-12 items-center hidden md:flex md:w-full w-[83%] top-16 py-4 md:bg-transparent bg-[#fff] right-10 md:top-0 absolute md:relative rounded-2xl">
-          <ul class="text-[#000] text-[1.125rem] md:text-[1rem] md:text-[#fff]">
-            <span class="px-3">About</span>
-            <hr class="border-1.5 border-[#c4c4c4] md:hidden my-4">
+        <nav id="nav-item" class="flex flex-col md:flex-row md:gap-12 items-center hidden md:flex md:w-full w-[83%] top-19 py-4 md:bg-transparent bg-[#fff] right-8 md:top-0 absolute md:relative rounded-lg hidden md:block">
+          <ul class="text-[#000] text-[1.125rem] md:text-[0.9375rem] md:text-[#fff]">
+            <span class="px-3 font-semibold md:font-regular cursor-pointer">About</span>
+            <hr class="border-1.5 border-[#cccccc] md:hidden my-4">
           </ul>
-          <ul class="text-[#000] text-[1.125rem] md:text-[1rem] md:text-[#fff]">
-            <span class="px-3">Discover</span>
-            <hr class="border-1.5 border-[#c4c4c4] md:hidden my-4">
+          <ul class="text-[#000] text-[1.125rem] md:text-[0.9375rem] md:text-[#fff]">
+            <span class="px-3 font-semibold md:font-regular cursor-pointer">Discover</span>
+            <hr class="border-1.5 border-[#cccccc] md:hidden my-4">
           </ul>
-          <ul class="text-[#000] text-[1.125rem] md:text-[1rem] md:text-[#fff] px-2">
-            <span class="px-3">Get Started</span>
-            <hr class="border-1.5 border-[#c4c4c4] md:hidden my-4">
+          <ul class="text-[#000] text-[1.125rem] md:text-[0.9375rem] md:text-[#fff] px-2">
+            <span class="px-3 font-semibold md:font-regular cursor-pointer">Get Started</span>
           </ul>
         </nav>
 
@@ -60,391 +59,422 @@
     </div>
   </header>
 
-  <section class="w-full md:w-1/2 flex flex-col gap-6 px-7 md:px-0 -mt-20 z-0 rounded-2xl relative">
-    <div class="flex flex-col items-center text-center md:text-left bg-[#fff] rounded-2xl relative py-8 px-5">
-      <img class="absolute -top-6 w-[50px] h-[50px]" src="images/logo-mastercraft.svg">
+  <main class="w-full flex flex-col items-center -mt-13 gap-6 px-4 relative">
+    
+    <section class="w-full md:w-1/2 flex flex-col gap-6 md:px-0 z-0 rounded-2xl">
+      <div class="flex flex-col items-center text-center md:text-left bg-[#fff] rounded-2xl relative py-8 px-5">
+        <img class="absolute -top-6 w-[50px] h-[50px]" src="images/logo-mastercraft.svg">
 
-      <h2 class="text-3xl font-bold mt-4 mb-4">
-        Mastercraft Bamboo Monitor Riser
-      </h2>
-
-      <p class="mb-7 text-[#929090]">
-        A beautiful & handcrafted monitor stand to reduce neck and eye strain.
-      </p>
-
-      <div class="flex justify-center gap-3 md:justify-between w-full p-4">
-        <button id="js-btn" class="rounded-full text-[#fff] text-sm bg-[#3cb4ac] px-7 hover:bg-[#147b74] transition duration-300 cursor-pointer">
-          Back this project
-        </button>
-
-        <button class="rounded-full p-0 text-[#aaaaaa] text-sm font-bold flex gap-3 items-center bg-[#eeeeee] pr-0 md:pr-7 hover:bg-[#147b74] transition duration-300 cursor-pointer">
-            <img class="w-[48px] h-[48px]" src="images/icon-bookmark.svg" alt="bookmark icon">
-            <span class="hidden md:inline">Bookmark</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="bg-[#fff] mt-5 px-8 py-8">
-      <div class="flex flex-col items-center text-center md:flex-row md:justify-evenly w-full mb-5">
-        <div class="border-b-2 md:border-b-0 md:border-r-2 border-[#c4c4c4] p-4 w-full md:w-1/3">
-          <p class="text-[#929090] text-sm">
-            <span id="amount-pledged" class="text-3xl text-[#000] font-bold">$89,914</span><br>of $100,000 backed
-          </p>
-        </div>
-        
-        <div class="border-b-2 md:border-b-0 md:border-r-2 border-[#c4c4c4] p-4 w-full md:w-1/3">
-          <p class="text-[#929090] text-sm">
-            <span id="nos-backers" class="text-3xl text-[#000] font-bold">5,007</span><br>total backers
-          </p>
-        </div> 
-  
-        <div class="p-4 w-full md:w-1/3">
-          <p class="text-[#929090] text-sm">
-            <span class="text-3xl text-[#000] font-bold">56</span><br>days left
-          </p>
-        </div> 
-      </div>
-
-      <div class="relative ">
-        <hr class="border-5 border-[#f0f0f0] rounded-full">
-        <hr id="progress-bar" class="border-5 border-[#3cb4ac] absolute top-0 left-0 rounded-full w-[0%]">
-      </div>
-    </div>
-
-    <div class="flex flex-col items-center gap-4 p-8 bg-[#fff]">
-      <div>
-        <h3 class="text-[1.125rem] font-bold mb-6">
-          About this project
-        </h3>
-  
-        <p class="text-[#929090] leading-7 mb-3">
-          The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen 
-          to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve 
-          your posture and make you more comfortable while at work, helping you stay focused on the task at hand.
-        </p>
-
-        <p class="text-[#929090] leading-7 mb-5">
-          Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer 
-          to allow notepads, pens, and USB sticks to be stored under the stand.
-        </p>
-      </div>
-
-      <div class="p-6 border-2 border-[#c4c4c4] rounded-2xl">
-        <div class="flex flex-col md:flex-row md:justify-between mb-4">
-          <h4 class="font-bold text-[1.125rem]">
-            Bamboo Stand
-          </h4>
-
-          <p class="text-[#3cb4ac] text-[0.875rem] font-bold">
-            Pledge $25 or more
-          </p>
-        </div>
-
-        <p class="mb-5 text-[#929090]">
-          You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and 
-          you’ll be added to a special Backer member list.
-        </p>
-
-        <div class="flex flex-col md:flex-row md:justify-between">
-          <p class="text-[0.975rem] text-[#929090] flex gap-2 items-center">
-            <span class="font-bold text-[#000] text-[1.75rem]">101</span>left
-          </p>
-
-          <button id="reward-btn" class="reward-btn rounded-full text-[#fff] bg-[#3cb4ac] p-3 px-2 md:px-7 w-1/2 md:w-auto text-sm hover:bg-[#147b74] transition duration-300 cursor-pointer">
-            Select Reward
-          </button>
-        </div>
-      </div>
-
-      <div class="p-6 border-2 border-[#c4c4c4] rounded-2xl">
-        <div class="flex flex-col md:flex-row md:justify-between mb-4">
-          <h4 class="font-bold text-[1.125rem]">
-            Black Edition Stand
-          </h4>
-
-          <p class="text-[#3cb4ac] text-[0.875rem] font-bold">
-            Pledge $75 or more
-          </p>
-        </div>
-
-        <p class="mb-5 text-[#929090]">
-          You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer 
-          member list. Shipping is included.
-        </p>
-
-        <div class="flex md:justify-between flex-col md:flex-row">
-          <p class="text-[0.975rem] text-[#929090] flex gap-2 items-center">
-            <span class="font-bold text-[#000] text-[1.75rem]">64</span>left
-          </p>
-
-          <button id="" class="reward-btn rounded-full text-[#fff] bg-[#3cb4ac] p-3 px-2 md:px-7 w-1/2 md:w-auto text-sm hover:bg-[#147b74] transition duration-300 cursor-pointer">
-            Select Reward
-          </button>
-        </div>
-      </div>
-
-      <div class="p-6 border-2 border-[#c4c4c4] rounded-2xl">
-        <div class="flex flex-col md:flex-row md:justify-between mb-4">
-          <h4 class="font-bold text-[1.125rem] text-[#5f5f5f]">
-            Mahogany Special Edition
-          </h4>
-
-          <p class="text-[#3cb4ac] text-[0.875rem] font-bold">
-            Pledge $200 or more
-          </p>
-        </div>
-
-        <p class="mb-5 text-[#929090]">
-          You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added 
-          to our Backer member list. Shipping is included.
-        </p>
-
-        <div class="flex flex-col md:flex-row md:justify-between">
-          <p class="text-[0.975rem] text-[#929090] flex gap-1.5 items-center">
-            <span class="font-bold text-[#5f5f5f] text-[1.75rem]">0</span>left
-          </p>
-
-          <button class="rounded-full w-1/2 md:w-auto text-sm text-[#fff] bg-[#929090] p-3  px-2 md:px-7">
-            Out of stock
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  
-    <!-- Modal section design -->
-
-    <section id="modal" class="w-full md:w-1/2 flex flex-col rounded-2xl gap-3 bg-[#fff] hidden px-7 md:p-8 absolute top-[12%] z-20">
-      <div class="flex justify-end w-full">
-        <img id="close-modal" src="images/icon-close-modal.svg" alt="close x icon">
-      </div>
-
-      <h2 class="font-bold text-2xl">
-        Back this project
-      </h2>
-
-      <p class="text-[#c4c4c4]">
-        Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?
-      </p>
-
-      <div class="pledge-container border-2 border-gray-200 rounded-2xl p-6">
-        <div class="flex gap-2 mb-2">
-          <div>
-            <input name="pledge" type="radio" class="js-radio radio" value="option1">
-          </div>
-
-          <h3 class="text-sm font-bold">
-            Pledge with no reward
-          </h3>
-        </div>
-
-        <div class="pl-[1.75rem]">
-          <p class="text-[#c4c4c4] text-sm">
-            Choose to support us without a reward if you simply believe in our project. As a backer, 
-             you will be signed up to receive product updates via email.
-          </p>
-        </div>
-
-        <div class="newContainer hidden">
-          <div class="pledge-section mt-3">
-            <hr class="divider border-2 border-[#d1d1d1]">
-            <div class="new flex flex-col items-center md:flex-row justify-between mt-3">
-                <p>
-                    Enter your pledge
-                </p>
-
-                <div class="right-side flex items-center justify-end gap-2">
-                    <input class="pledge-amount px-[0.5rem] py-[0.75rem] rounded-full w-[30%] border-2 border-[#c4c4c4]" value="" type="number" name="amount">
-                    <button class="pledge-btn bg-[#3cb4ac] text-[#fff] px-[0.5rem] py-[0.75rem] rounded-full w-[30%]">
-                        Continue
-                    </button>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pledge-container border-2 border-gray-200 rounded-2xl p-6">
-        <div class="">
-
-          <div class="flex items-center justify-between gap-4 mb-2">
-            <div class="flex gap-2 items-center md:justify-center">
-              <div>
-                <input name="pledge" type="radio" class="js-radio radio" value="option2">
-              </div>
-  
-              <div class="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center mt-0">
-                <h3 class="text-sm font-bold mb-0">
-                  Bamboo Stand
-                </h3>
-  
-                <p class="text-sm text-[#3cb4ac] font-bold mt-0">
-                  Pledge $25 or more
-                </p>
-              </div>
-            </div>
-
-            <p class=" text-[1rem] text-[#c4c4c4] hidden md:block"> <span class="font-bold text-[#000]">101</span> left
-            </p>
-          </div>
-  
-          <div class="px-0 md:pl-[1.75rem]">
-            <p class="text-[#c4c4c4] text-sm">
-              You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and
-              you’ll be added to a special Backer member list.
-            </p>
-  
-            <p class=" text-[1rem] text-[#c4c4c4] md:hidden"> <span class="font-bold text-[#000]">101</span> left
-            </p>
-          </div>
-        </div>
-
-        <div class="newContainer hidden">
-          <div class="pledge-section mt-3">
-            <hr class="divider border-2 border-[#d1d1d1]">
-            <div class="new flex flex-col md:flex-row items-center justify-between mt-3">
-                <p>
-                    Enter your pledge
-                </p>
-
-                <div class="right-side flex justify-end items-center gap-2">
-                    <input class="pledge-amount px-[0.5rem] py-[0.75rem] rounded-full w-[30%] border-2 border-[#c4c4c4]" value="25" type="number" name="amount">
-                    <button class="pledge-btn bg-[#3cb4ac] text-[#fff] px-[0.5rem] py-[0.75rem] rounded-full w-[30%]">
-                        Continue
-                    </button>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pledge-container border-2 border-gray-200 rounded-2xl p-6">
-        <div class="">
-
-          <div class="flex items-center justify-between gap-4 mb-2">
-            <div class="flex gap-2 items-center md:justify-center">
-              <div>
-                <input name="pledge" type="radio" class="js-radio radio" value="option3">
-              </div>
-  
-              <div class="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center mt-0">
-                <h3 class="text-sm font-bold mb-0">
-                  Black Edition Stand
-                </h3>
-  
-                <p class="text-sm text-[#3cb4ac] font-bold mt-0">
-                  Pledge $64 or more
-                </p>
-              </div>
-            </div>
-
-            <p class=" text-[1rem] text-[#c4c4c4] hidden md:block"> <span class="font-bold text-[#000]">75</span> left
-            </p>
-          </div>
-  
-          <div class="px-0 md:pl-[1.75rem]">
-            <p class="text-[#c4c4c4] text-sm">
-              You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer
-              member list. Shipping is included.
-            </p>
-  
-            <p class=" text-[1rem] text-[#c4c4c4] md:hidden"> <span class="font-bold text-[#000]">75</span> left
-            </p>
-          </div>
-        </div>
-
-        <div class="newContainer hidden">
-          <div class="pledge-section mt-3">
-            <hr class="divider border-2 border-[#d1d1d1]">
-            <div class="new flex flex-col md:flex-row items-center justify-between mt-3">
-                <p>
-                    Enter your pledge
-                </p>
-
-                <div class="right-side flex justify-end items-center gap-2">
-                    <input class="pledge-amount px-[0.5rem] py-[0.75rem] rounded-full w-[30%] border-2 border-[#c4c4c4]" value="64" type="number" name="amount">
-                    <button class="pledge-btn bg-[#3cb4ac] text-[#fff] px-[0.5rem] py-[0.75rem] rounded-full w-[30%]">
-                        Continue
-                    </button>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pledge-container border-2 border-gray-200 rounded-2xl p-6">
-        <div class="">
-          <div class="flex items-center justify-between gap-4 mb-2">
-            <div class="flex gap-2 items-center md:justify-center">
-              <div>
-                <input name="pledge" type="radio" class="js-radio radio" value="option4">
-              </div>
-  
-              <div class="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center mt-0">
-                <h3 class="text-sm font-bold mb-0">
-                  Mahogany Special Editiond
-                </h3>
-  
-                <p class="text-sm text-[#3cb4ac] font-bold mt-0">
-                  Pledge $200 or more
-                </p>
-              </div>
-            </div>
-
-            <p class=" text-[1rem] text-[#c4c4c4] hidden md:block"> <span class="font-bold text-[#000]">0</span> left
-            </p>
-          </div>
-  
-          <div class="px-0 md:pl-[1.75rem]">
-            <p class="text-[#c4c4c4] text-sm">
-              You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added
-              to our Backer member list. Shipping is included.
-            </p>
-  
-            <p class=" text-[1rem] text-[#c4c4c4] md:hidden"> <span class="font-bold text-[#000]">0</span> left
-            </p>
-          </div>
-        </div>
-
-        <div class="newContainer hidden">
-          <div class="pledge-section mt-3">
-            <hr class="divider border-2 border-[#d1d1d1]">
-            <div class="new flex flex-col md:flex-row items-center justify-between mt-3">
-                <p>
-                    Enter your pledge
-                </p>
-
-                <div class="right-side flex justify-end items-center gap-2">
-                    <input class="pledge-amount px-[0.5rem] py-[0.75rem] rounded-full w-[30%] border-2 border-[#c4c4c4]" value="200" type="number" name="amount">
-                    <button class="pledge-btn bg-[#3cb4ac] text-[#fff] px-[0.5rem] py-[0.75rem] rounded-full w-[30%]">
-                        Continue
-                    </button>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="thankYou-page" class="w-full md:w-1/3 hidden flex flex-col items-center rounded-2xl gap-3 bg-[#fff] px-7 md:p-8 absolute top-[12%] z-20">
-      <img src="images/icon-check.svg">
-
-      <div class="text-center">
-        <h2 class="font-bold text-2xl">
-          Thanks for your support!
+        <h2 class="text-2xl md:text-3xl font-bold mt-4 mb-4">
+          Mastercraft Bamboo Monitor Riser
         </h2>
-  
-        <p class="text-[#c4c4c4]">
-          Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get
-          an email once our campaign is completed.
+
+        <p class="mb-7 text-[#929090]">
+          A beautiful & handcrafted monitor stand to reduce neck and eye strain.
         </p>
+
+        <div class="flex justify-center gap-3 md:justify-between w-full p-4">
+          <button id="js-btn" class="rounded-full text-[#fff] text-sm font-semibold bg-[#3cb4ac] px-3 md:px-7 hover:bg-[#147b74] transition duration-300 cursor-pointer">
+            Back this project
+          </button>
+
+          <button id="bookMarkBtn" class="group flex items-center gap-2 pr-0 md:pr-4 py-0 min-h-[100%] rounded-full bg-gray-200 cursor-pointer">
+            <span id="bookmarkContainer" class="rounded-full p-3 py-3 bg-[#000] transition-colors duration-200">
+              <svg id="bookmarkIcon" class="w-5 h-5 transition-colors duration-200 fill-[#c4c4c4]" viewBox="0 0 24 24">
+                  <path d="M5 3v18l7-5 7 5V3z" />
+              </svg>
+              </span>
+              <span class="bookmark-text hidden md:inline text-gray-600 transition-colors duration-200 font-semibold">Bookmark</span>
+          </button>
+        </div>
       </div>
 
-      <button id="gotIt-btn" class="bg-[#3cb4ac] text-[#fff] rounded-full px-6 py-2">
-        Got it!
-      </button>
+      <div class="bg-[#fff] mt-5 px-8 py-8">
+        <div class="flex flex-col items-center text-center md:flex-row md:justify-evenly w-full mb-5">
+          <div class="flex flex-col items-center md:border-b-0 md:border-r-2 border-[#c4c4c4] p-4 w-full md:w-1/3">
+            <p class="text-[#929090] text-sm">
+              <span id="amount-pledged" class="text-3xl text-[#000] font-bold">$000,000</span><br>of $100,000 backed
+            </p>
+
+            <hr class="mt-4 border-0.8 border-[#c4c4c4] md:hidden w-[20%]">
+          </div>
+          
+          <div class="flex flex-col items-center md:border-b-0 md:border-r-2 border-[#c4c4c4] p-4 w-full md:w-1/3">
+            <p class="text-[#929090] text-sm">
+              <span id="nos-backers" class="text-3xl text-[#000] font-bold">0,000</span><br>total backers
+            </p>
+
+            <hr class="mt-4 border-0.8 border-[#c4c4c4] md:hidden w-[20%]">
+          </div> 
+    
+          <div class="p-4 w-full md:w-1/3">
+            <p class="text-[#929090] text-sm">
+              <span class="text-3xl text-[#000] font-bold">56</span><br>days left
+            </p>
+          </div> 
+        </div>
+
+        <div class="relative ">
+          <hr class="border-5 border-[#f0f0f0] rounded-full">
+          <hr id="progress-bar" class="border-5 border-[#3cb4ac] absolute top-0 left-0 rounded-full w-[0%] hidden">
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center gap-8 p-8 bg-[#fff]">
+        <div>
+          <h3 class="text-[1.125rem] font-bold mb-6">
+            About this project
+          </h3>
+    
+          <p class="text-[#858484] text-[0.9375rem] md:text-[1rem] leading-7 mb-3">
+            The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen 
+            to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve 
+            your posture and make you more comfortable while at work, helping you stay focused on the task at hand.
+          </p>
+
+          <p class="text-[#858484] text-[0.9375rem] md:text-[1rem] leading-7 mb-5">
+            Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer 
+            to allow notepads, pens, and USB sticks to be stored under the stand.
+          </p>
+        </div>
+
+        <div class="p-6 border-2 border-[#c4c4c4] rounded-[8px]">
+          <div class="flex flex-col md:flex-row md:justify-between mb-4">
+            <h4 class="font-bold text-[1.125rem]">
+              Bamboo Stand
+            </h4>
+
+            <p class="text-[#3cb4ac] text-[0.875rem] font-bold">
+              Pledge $25 or more
+            </p>
+          </div>
+
+          <p class="mb-5 text-[#858484] text-[0.9375rem] leading-7">
+            You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and 
+            you’ll be added to a special Backer member list.
+          </p>
+
+          <div class="flex flex-col md:flex-row gap-2 md:justify-between">
+            <p class="text-[0.975rem] text-[#858484] flex gap-2 items-center">
+              <span class="font-bold text-[#000] text-[1.75rem]">101</span>left
+            </p>
+
+            <button id="reward-btn" class="reward-btn rounded-full text-[#fff] bg-[#3cb4ac] p-3 md:px-7 w-1/2 md:w-auto text-sm hover:bg-[#147b74] transition duration-300 cursor-pointer">
+              Select Reward
+            </button>
+          </div>
+        </div>
+
+        <div class="p-6 border-2 border-[#c4c4c4] rounded-[8px]">
+          <div class="flex flex-col md:flex-row md:justify-between mb-4">
+            <h4 class="font-bold text-[1.125rem]">
+              Black Edition Stand
+            </h4>
+
+            <p class="text-[#3cb4ac] text-[0.875rem] font-bold">
+              Pledge $75 or more
+            </p>
+          </div>
+
+          <p class="mb-5 text-[#858484] text-[0.9375rem] leading-7">
+            You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer 
+            member list. Shipping is included.
+          </p>
+
+          <div class="flex md:justify-between flex-col md:flex-row gap-2">
+            <p class="text-[0.975rem] text-[#858484] flex gap-2 items-center">
+              <span class="font-bold text-[#000] text-[1.75rem]">64</span>left
+            </p>
+
+            <button id="" class="reward-btn rounded-full text-[#fff] bg-[#3cb4ac] p-3 md:px-7 w-1/2 md:w-auto text-sm hover:bg-[#147b74] transition duration-300 cursor-pointer">
+              Select Reward
+            </button>
+          </div>
+        </div>
+
+        <div class="p-6 border-2 border-[#c4c4c4] rounded-[8px]">
+          <div class="flex flex-col md:flex-row md:justify-between mb-4">
+            <h4 class="font-bold text-[1.125rem] text-[#5f5f5f]">
+              Mahogany Special Edition
+            </h4>
+
+            <p class="text-[#3cb4ace8] text-[0.875rem] font-bold">
+              Pledge $200 or more
+            </p>
+          </div>
+
+          <p class="mb-5 text-[#858484] text-[0.9375rem] leading-7">
+            You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added 
+            to our Backer member list. Shipping is included.
+          </p>
+
+          <div class="flex flex-col md:flex-row md:justify-between gap-2">
+            <p class="text-[0.975rem] text-[#858484] flex gap-2 items-center">
+              <span class="font-bold text-[#000] text-[1.75rem]">0</span>left
+            </p>
+
+            <button class="rounded-full w-1/2 md:w-auto text-sm text-[#fff] bg-[#bdbdbd] p-3 md:px-7">
+              Out of stock
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
+
+    
+      <!-- Modal section design -->
+
+      <section id="modal" class="w-full md:w-1/2 flex flex-col rounded-2xl gap-3 bg-[#fff] hidden p-7 md:p-8 absolute -mt-14 -top-[0%] z-20">
+        <div class="flex justify-end w-full cursor-pointer">
+          <img id="close-modal" src="images/icon-close-modal.svg" alt="close x icon">
+        </div>
+
+        <h2 class="font-bold text-2xl">
+          Back this project
+        </h2>
+
+        <p class="text-[#858484] text-sm">
+          Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?
+        </p>
+
+        <div class="pledge-container border-2 border-gray-200 rounded-[8px] py-6">
+          <div class="flex gap-2 mb-3 px-4 md:px-6">
+            <div>
+              <input name="pledge" type="radio" class="js-radio radio" value="option1">
+            </div>
+
+            <h3 class="text-sm font-bold hover:text-[#147b74] cursor-pointer">
+              Pledge with no reward
+            </h3>
+          </div>
+
+          <div class="px-4 md:px-[1.75rem] mb-4">
+            <p class="text-[#858484] text-sm">
+              Choose to support us without a reward if you simply believe in our project. As a backer, 
+              you will be signed up to receive product updates via email.
+            </p>
+          </div>
+
+          <div class="newContainer hidden">
+            <div class="pledge-section">
+              <hr class="divider border-0.7 border-[#d1d1d1] mb-3">
+              <div class="new flex flex-col gap-3 items-center md:flex-row justify-between px-6">
+                  <p class="text-[#858484] text-[0.9375rem]">
+                      Enter your pledge
+                  </p>
+
+                  <div class="right-side flex justify-center md:justify-end gap-4 md:gap-2">
+                    <div class="relative w-[37%]">
+                      <span class="absolute left-2 top-1/2 transform -translate-y-1/2 text-[1.125rem] text-[#c4c4c4]">$</span>
+                      <input class="pledge-amount pl-6 px-[0.625rem] py-[0.5rem] rounded-full w-full border-2 border-[#cccccc] font-semibold text-[1.1875rem] cursor-pointer" value="" type="number" name="amount">
+                    </div>
+                      <button class="pledge-btn bg-[#3cb4ac] text-[#fff] text-[0.75rem] md:text-sm px-[0.625rem] py-[0.5rem] rounded-full w-[37%] hover:bg-[#147b74] transition duration-300 cursor-pointer">
+                          Continue
+                      </button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pledge-container border-2 border-gray-200 rounded-[8px] py-6">
+          <div class="mb-4">
+
+            <div class="flex items-center justify-between gap-4 mb-3 px-4 md:px-6">
+              <div class="flex gap-2 items-center md:justify-center ">
+                <div>
+                  <input name="pledge" type="radio" class="js-radio radio" value="option2">
+                </div>
+    
+                <div class="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center mt-0">
+                  <h3 class="text-sm font-bold hover:text-[#147b74] cursor-pointer">
+                    Bamboo Stand
+                  </h3>
+    
+                  <p class="text-sm text-[#3cb4ac] font-bold cursor-pointer">
+                    Pledge $25 or more
+                  </p>
+                </div>
+              </div>
+
+              <p class=" text-[1rem] text-[#858484] hidden md:block"> <span class="font-bold text-[#000]">101</span> left
+              </p>
+            </div>
+    
+            <div class="px-4 md:px-[1.75rem] mb-3">
+              <p class="text-[#858484] text-sm">
+                You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and
+                you’ll be added to a special Backer member list.
+              </p>
+    
+              <p class=" text-[1rem] text-[#c4c4c4] md:hidden mt-2"> <span class="font-bold text-[#000]">101</span> left
+              </p>
+            </div>
+          </div>
+
+          <div class="newContainer hidden">
+            <div class="pledge-section">
+              <hr class="divider border-0.7 border-[#d1d1d1] mb-3">
+              <div class="new flex flex-col md:flex-row gap-3 items-center justify-between px-6">
+                  <p class="text-[#858484] text-[0.9375rem]">
+                      Enter your pledge
+                  </p>
+
+                  <div class="right-side flex md:justify-end justify-center gap-4 md:gap-2">
+                      <div class="relative w-[37%]">
+                        <span class="absolute left-2 top-1/2 transform -translate-y-1/2 text-[1.125rem] text-[#c4c4c4]">$</span>
+                        <input class="pledge-amount pl-6 px-[0.625rem] py-[0.5rem] rounded-full w-full border-2 border-[#cccccc] font-semibold text-[1.1875rem] cursor-pointer" value="25" type="number" name="amount">
+                      </div>
+                      <button class="pledge-btn bg-[#3cb4ac] text-[#fff] text-[0.75rem] md:text-sm px-[0.625rem] py-[0.5rem] rounded-full w-[37%] hover:bg-[#147b74] transition duration-300 cursor-pointer">
+                          Continue
+                      </button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pledge-container border-2 border-gray-200 rounded-[8px] py-6">
+          <div class="mb-4">
+
+            <div class="flex items-center justify-between gap-4 mb-3 px-4 md:px-6">
+              <div class="flex gap-2 items-center md:justify-center">
+                <div>
+                  <input name="pledge" type="radio" class="js-radio radio" value="option3">
+                </div>
+    
+                <div class="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center mt-0">
+                  <h3 class="text-sm font-bold hover:text-[#147b74] cursor-pointer">
+                    Black Edition Stand
+                  </h3>
+    
+                  <p class="text-sm text-[#3cb4ac] font-bold cursor-pointer">
+                    Pledge $64 or more
+                  </p>
+                </div>
+              </div>
+
+              <p class=" text-[1rem] text-[#858484] hidden md:block"> <span class="font-bold text-[#000]">75</span> left
+              </p>
+            </div>
+    
+            <div class="px-4 md:px-[1.75rem] mb-3">
+              <p class="text-[#858484] text-sm">
+                You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer
+                member list. Shipping is included.
+              </p>
+    
+              <p class=" text-[1rem] text-[#c4c4c4] md:hidden  mt-2"> <span class="font-bold text-[#000]">75</span> left
+              </p>
+            </div>
+          </div>
+
+          <div class="newContainer hidden">
+            <div class="pledge-section mt-3">
+              <hr class="divider border-0.7 border-[#d1d1d1] mb-3">
+              <div class="new flex flex-col gap-3 md:flex-row items-center justify-between px-6">
+                  <p class="text-[#858484] text-[0.9375rem]">
+                      Enter your pledge
+                  </p>
+
+                  <div class="right-side flex md:justify-end justify-center gap-4 md:gap-2">
+                    <div class="relative w-[37%]">
+                      <span class="absolute left-2 top-1/2 transform -translate-y-1/2 text-[1.125rem] text-[#c4c4c4]">$</span>
+                      <input class="pledge-amount pl-6 px-[0.625rem] py-[0.5rem] rounded-full w-full border-2 border-[#cccccc] font-semibold text-[1.1875rem] cursor-pointer" value="64" type="number" name="amount">
+                    </div>
+                      <button class="pledge-btn bg-[#3cb4ac] text-[#fff] text-[0.75rem] md:text-sm px-[0.625rem] py-[0.5rem] rounded-full w-[37%] hover:bg-[#147b74] transition duration-300 cursor-pointer">
+                          Continue
+                      </button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pledge-container border-2 border-gray-200 rounded-[8px] py-6 relative">
+          <!-- <div class="bg-[#f1f1f157] absolute w-full h-full inset-0 z-10"></div> -->
+          <div>
+            <div class="">
+            <div class="flex items-center justify-between gap-4 mb-3 px-4 md:px-6">
+              <div class="flex gap-2 items-center md:justify-center">
+                <div>
+                  <input name="pledge" type="radio" class="js-radio radio" value="option4">
+                </div>
+    
+                <div class="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center mt-0">
+                  <h3 class="text-sm font-bold cursor-pointer">
+                    Mahogany Special Edition
+                  </h3>
+    
+                  <p class="text-sm text-[#3cb4ace8] font-bold cursor-pointer">
+                    Pledge $200 or more
+                  </p>
+                </div>
+              </div>
+
+              <p class=" text-[1rem] text-[#858484] hidden md:block"> <span class="font-bold text-[#000]">0</span> left
+              </p>
+            </div>
+    
+            <div class="px-4 md:px-[1.75rem] mb-3">
+              <p class="text-[#858484] text-sm">
+                You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added
+                to our Backer member list. Shipping is included.
+              </p>
+    
+              <p class=" text-[1rem] text-[#929090] md:hidden  mt-2"> <span class="font-bold text-[#000]">0</span> left
+              </p>
+            </div>
+          </div>
+
+          <div class="newContainer hidden">
+            <div class="pledge-section">
+              <hr class="divider border-0.7 border-[#d1d1d1] mb-3">
+              <div class="new flex flex-col gap-3 md:flex-row items-center justify-between px-6">
+                  <p class="text-[#858484] text-[0.9375rem]">
+                      Enter your pledge
+                  </p>
+
+                  <div class="right-side flex md:justify-end justify-center gap-4 md:gap-2">
+                    <div class="relative w-[37%]">
+                      <span class="absolute left-2 top-1/2 transform -translate-y-1/2 text-[1.125rem] text-[#c4c4c4]">$</span>
+                      <input class="pledge-amount pl-6 px-[0.625rem] py-[0.5rem] rounded-full w-full border-2 border-[#cccccc] font-semibold text-[1.1875rem] cursor-pointer" value="200" type="number" name="amount">
+                    </div>
+                      <button class="pledge-btn bg-[#3cb4ac] text-[#fff] text-[0.75rem] md:text-sm px-[0.625rem] py-[0.5rem] rounded-full w-[37%]">
+                          Continue
+                      </button>
+                  </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Thank you section -->
+
+      <section id="thankYou-page" class="w-full md:w-1/3 hidden flex flex-col items-center gap-3 p-5 md:p-8 absolute top-0 md:top-[5%] z-20">
+        <div class="p-6 flex flex-col items-center gap-7 bg-[#fff] rounded-[8px] w-full">
+          <img src="images/icon-check.svg">
+
+          <div class="text-center">
+            <h2 class="font-bold text-[1.25rem] mb-5">
+              Thanks for your support!
+            </h2>
+      
+            <p class="text-[#c4c4c4] text-sm">
+              Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get
+              an email once our campaign is completed.
+            </p>
+          </div>
+
+          <button id="gotIt-btn" class="bg-[#3cb4ac] text-[#fff] rounded-full px-6 py-2 cursor-pointer">
+            Got it!
+          </button>
+        </div>
+      </section>
+  </main>
 
    <script src="script.js"></script>
 </body>
