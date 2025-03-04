@@ -19,51 +19,60 @@ menu.addEventListener('click', () => {
     }
 });
 
-const bookMarkBtn = document.getElementById('bookMarkBtn');
-const bookmarkText = document.querySelector('.bookmark-text');
-const bookmarkIcon = document.getElementById("bookmarkIcon");
-const iconContainer = document.getElementById('bookmarkContainer');
-
-bookMarkBtn.addEventListener("click", () => {
-    bookmarkText.innerText = bookmarkText.innerText === "Bookmark" ? "Bookmarked" : "Bookmark";
-    bookmarkText.classList.toggle("text-[#147b74]");
-
-    // Toggle icon color
-    bookmarkIcon.classList.toggle("fill-white"); 
-    bookmarkIcon.classList.toggle("fill-[#c4c4c4]");
-
-    // Toggle icon container color
-    iconContainer.classList.toggle("bg-[#147b74]")
-});
+primaryCta();
+modalFun();
+makePledge();
 
 
-backProjectBtn.addEventListener('click', () => {
-    modal.classList.remove('hidden');
-    console.log('open modal');
-    overlay.classList.remove('hidden');
-});
+function primaryCta() {
+    const bookMarkBtn = document.getElementById('bookMarkBtn');
+    const bookmarkText = document.querySelector('.bookmark-text');
+    const bookmarkIcon = document.getElementById("bookmarkIcon");
+    const iconContainer = document.getElementById('bookmarkContainer');
 
-closeModalBtn.addEventListener('click', () => {
-    modal.classList.add('hidden');
-    overlay.classList.add('hidden');
-    console.log('close modal');
+    bookMarkBtn.addEventListener("click", () => {
+        bookmarkText.innerText = bookmarkText.innerText === "Bookmark" ? "Bookmarked" : "Bookmark";
+        bookmarkText.classList.toggle("text-[#147b74]");
 
-    const radio = document.querySelectorAll('.js-radio');
-    radio.forEach(radio => {
-        radio.checked = false;
+        // Toggle icon color
+        bookmarkIcon.classList.toggle("fill-white"); 
+        bookmarkIcon.classList.toggle("fill-[#c4c4c4]");
+
+        // Toggle icon container color
+        iconContainer.classList.toggle("bg-[#147b74]")
     });
 
-    const container = document.querySelectorAll('.newContainer');
-    const pledgeContainer = document.querySelectorAll(".pledge-container");
-
-    pledgeContainer.forEach(cont => cont.classList.remove("active"));
-    
-    container.forEach(cont => {
-        if (cont) {
-            cont.classList.add("hidden"); // Remove any added section
-        }
+    // Opens the back this project page
+    backProjectBtn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        console.log('open modal');
+        overlay.classList.remove('hidden');
     });
-});
+}
+
+function modalFun() {
+    closeModalBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        overlay.classList.add('hidden');
+        console.log('close modal');
+
+        const radio = document.querySelectorAll('.js-radio');
+        radio.forEach(radio => {
+            radio.checked = false;
+        });
+
+        const container = document.querySelectorAll('.newContainer');
+        const pledgeContainer = document.querySelectorAll(".pledge-container");
+
+        pledgeContainer.forEach(cont => cont.classList.remove("active"));
+        
+        container.forEach(cont => {
+            if (cont) {
+                cont.classList.add("hidden"); // Remove any added section
+            }
+        });
+    });
+}
 
 function makePledge() {
     const radio = document.querySelectorAll('.js-radio');
@@ -71,6 +80,7 @@ function makePledge() {
     const pledgeContainer = document.querySelectorAll(".pledge-container");
 
     radio.forEach((btn, index) => {
+        // Skips all functionalities for radio button 4
         if (index === 3) {
             return;
         }
@@ -84,10 +94,12 @@ function makePledge() {
 
             const pledgeSection = parentContainer.querySelector(".newContainer");
 
+            // Render the pledge section by removing hidden class
             if (pledgeSection) {
                 pledgeSection.classList.remove('hidden');
             }
 
+            // Assign functionalities to corresponding radio button clicked
             if (btn.checked && container[index]) {
                 pledgeContainer[index].classList.add('active');
                 backThisProject();
@@ -96,6 +108,7 @@ function makePledge() {
             }
         });
 
+         // Assign functionalities to corresponding container clicked
         if (pledgeContainer[index]) {
             pledgeContainer[index].addEventListener('click', () => {
                 pledgeContainer.forEach((cont) => {
@@ -108,14 +121,13 @@ function makePledge() {
     });
 }
 
-makePledge();
-
 function backThisProject() {
     let totalAmount = document.getElementById('amount-pledged');
     let backers = document.getElementById('nos-backers');
     let amountBacked = Number(totalAmount.textContent.replace(/[^0-9.]/g, ""));
     let nosBacked = Number(backers.textContent.replace(/[^0-9.]/g, ""));
 
+    // Gets page only after it is rendered in the DOM
    setTimeout( () => {
     const pledgeBtns = document.querySelectorAll('.pledge-btn');
 
@@ -176,36 +188,33 @@ function backThisProject() {
    }, 100);
 }
 
-const progressBar = document.getElementById('progress-bar');
-let total = 0;
 
+// Updates the progress bar
+let total = 0;
 function trackingProgressBar(input, amountValue) {
+    const progressBar = document.getElementById('progress-bar');
     if (!progressBar) {
         console.error("Progress bar element not found!");
         return;
     }
 
-    // if (amountBacked > 100000) {
-    //     console.log('complete');
-    //     return;
-    // }
-
     if (input === '') {
         console.log('no additional backer');
     } else {
-        const progress = 100 * (amountValue / 100000).toFixed(4);
-        total += progress;
-        console.log(total);
-        
-        console.log(progressBar);
-        if (total > 100) total = 100; // Prevent exceeding 100%
-        progressBar.style.width = `${total}%`;
-    }
+        // Calculates the percentage of the pledge and updates the bar
+        const progress = Number((100 * (amountValue / 100000)).toFixed(4));
 
-    if (total === 0) {
-        progressBar.classList.add('hidden');
-    } else if (total > 0) {
-        progressBar.classList.remove('hidden');
+        const newTotal = total + progress;
+        
+        if (total === 0) {
+            progressBar.classList.add('hidden');
+        } else if (total > 0) {
+            progressBar.classList.remove('hidden');
+        }
+        
+        total = newTotal > 100 ? 100 : newTotal;
+        console.log(progressBar);
+        progressBar.style.width = `${total}%`;
     }
 }
 
@@ -250,6 +259,7 @@ function setReward() {
     } 
 }
 
+// Helper function for number formatting
 function helperFunction(result) {
     const noBeforeDecimal = `${result}`.indexOf('.');
     const wholeNumber = 
@@ -273,17 +283,16 @@ function helperFunction(result) {
     return str + decimalNumber;
 }
 
+// Helper function for updating right image for all screen sizes
 const image = document.getElementById('bg-image');
 function resizeWindow() {
     if (window.innerWidth <= 768) {
         if (image) {
             image.src = 'images/image-hero-mobile.jpg';
-            console.log('mobile');
         }    
     } else {
         if (image) {
             image.src = 'images/image-hero-desktop.jpg';
-            console.log('desktop')
         } 
     }
 }
