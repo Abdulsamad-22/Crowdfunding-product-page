@@ -103,8 +103,8 @@ function makePledge() {
             if (btn.checked && container[index]) {
                 pledgeContainer[index].classList.add('active');
                 backThisProject();
-                setReward();
-                hasExecuted = true;
+                //setReward();
+                //hasExecuted = true;
             }
         });
 
@@ -138,29 +138,35 @@ function backThisProject() {
                     const parentContainer = btn.closest(".pledge-container");
                     const input = parentContainer.querySelector('.pledge-amount');
 
-
                     if (input) {
-                        const amountValue = Number(input.value.trim());
+                        // Get value, default to 0 if empty or invalid
+                        const inputValue = input.value.trim();
+                        const amountValue = inputValue === '' ? 0 : Number(inputValue);
 
-                        if (!isNaN(amountValue) && amountValue > 0) {
+                        if (isNaN(amountValue)) {
+                            console.log('Invalid input: Not a number');
+                            return;
+                        }
+
+                        if (amountValue > 0) {
                             amountBacked += amountValue;
                             nosBacked += 1;
 
                             console.log("Total Amount Backed:", amountBacked);
                             console.log("Total Backers:", nosBacked);
 
+                            // Update displays
                             totalAmount.textContent = `$${helperFunction(amountBacked)}`;
                             backers.textContent = helperFunction(nosBacked);
 
-                            input.value = input.defaultValue;
+                             //input.value = input.defaultValue;
+                        } else if (inputValue === '') {
+                            console.log('Empty input accepted as 0');
                         } else {
-                            console.log('Invalid input or empty value');
+                            console.log('Invalid amount: Must be greater than 0');
                         }
-
+                    
                         trackingProgressBar(input, amountValue);
-
-                    } else {
-                        console.log('no matching input found');
                     }
 
                     modal.classList.add('hidden');
@@ -188,9 +194,7 @@ function backThisProject() {
    }, 100);
 }
 
-
-// Updates the progress bar
-let total = 0;
+let total = 89.914;
 function trackingProgressBar(input, amountValue) {
     const progressBar = document.getElementById('progress-bar');
     if (!progressBar) {
@@ -202,21 +206,18 @@ function trackingProgressBar(input, amountValue) {
         console.log('no additional backer');
     } else {
         // Calculates the percentage of the pledge and updates the bar
-        const progress = Number((100 * (amountValue / 100000)).toFixed(4));
+        const maxAmt = 100000;
+        const progress = Number((100 * (amountValue / maxAmt)));
 
-        const newTotal = total + progress;
+        total += progress;
         
-        if (total === 0) {
-            progressBar.classList.add('hidden');
-        } else if (total > 0) {
-            progressBar.classList.remove('hidden');
-        }
-        
-        total = newTotal > 100 ? 100 : newTotal;
+        //total = newTotal > 100 ? 100 : newTotal;
         console.log(progressBar);
         progressBar.style.width = `${total}%`;
     }
 }
+
+setReward();
 
 function setReward() {
     const gotItBtn = document.getElementById('gotIt-btn');
@@ -234,7 +235,7 @@ function setReward() {
     });
 
 
-    setTimeout(() => {
+    document.addEventListener("DOMContentLoaded", function () {
         if (!gotItBtn.length) {
             gotItBtn.addEventListener('click', () => {
                 thankYou.classList.add('hidden');
