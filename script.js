@@ -102,9 +102,6 @@ function makePledge() {
             // Assign functionalities to corresponding radio button clicked
             if (btn.checked && container[index]) {
                 pledgeContainer[index].classList.add('active');
-                backThisProject();
-                //setReward();
-                //hasExecuted = true;
             }
         });
 
@@ -121,16 +118,37 @@ function makePledge() {
     });
 }
 
-function backThisProject() {
+document.addEventListener('DOMContentLoaded', () => {
     let totalAmount = document.getElementById('amount-pledged');
     let backers = document.getElementById('nos-backers');
     let amountBacked = Number(totalAmount.textContent.replace(/[^0-9.]/g, ""));
     let nosBacked = Number(backers.textContent.replace(/[^0-9.]/g, ""));
+    const progressBar = document.getElementById("progress-bar");
+    let total = 89.914;
 
-    // Gets page only after it is rendered in the DOM
-   setTimeout( () => {
-    const pledgeBtns = document.querySelectorAll('.pledge-btn');
+    function trackingProgressBar() {
+        const maxAmt = 100000;
+        let progress = (amountBacked / maxAmt) * 100;
 
+        total += progress
+
+        // Ensure progress does not exceed 100%
+        total = Math.min(progress, 100);
+
+        if (progressBar) {
+            progressBar.style.width = `${total}%`;
+            console.log(`Updated Progress: ${total}%`);
+        } else {
+            console.error("Progress bar element not found!");
+        }
+    }
+
+
+    function backThisProject() {
+    
+        // Gets page only after it is rendered in the DOM
+        const pledgeBtns = document.querySelectorAll('.pledge-btn');
+    
         if (pledgeBtns.length > 0) {
             pledgeBtns.forEach(btn => {
                 btn.addEventListener('click', (event) => {
@@ -158,15 +176,14 @@ function backThisProject() {
                             // Update displays
                             totalAmount.textContent = `$${helperFunction(amountBacked)}`;
                             backers.textContent = helperFunction(nosBacked);
+                            trackingProgressBar(input, amountValue);
 
-                             //input.value = input.defaultValue;
+                                //input.value = input.defaultValue;
                         } else if (inputValue === '') {
                             console.log('Empty input accepted as 0');
                         } else {
                             console.log('Invalid amount: Must be greater than 0');
                         }
-                    
-                        trackingProgressBar(input, amountValue);
                     }
 
                     modal.classList.add('hidden');
@@ -186,79 +203,49 @@ function backThisProject() {
                             cont.classList.add("hidden"); // Remove any added section
                         }
                     });
-                }, { once: true });
+                });
             });
         } else {
             console.log('no matching button found');
         }
-   }, 100);
-}
-
-let total = 89.914;
-function trackingProgressBar(input, amountValue) {
-    const progressBar = document.getElementById('progress-bar');
-    if (!progressBar) {
-        console.error("Progress bar element not found!");
-        return;
     }
 
-    if (input === '') {
-        console.log('no additional backer');
-    } else {
-        // Calculates the percentage of the pledge and updates the bar
-        const maxAmt = 100000;
-        const progress = Number((100 * (amountValue / maxAmt)));
+    backThisProject();
+});
 
-        total += progress;
-        
-        //total = newTotal > 100 ? 100 : newTotal;
-        console.log(progressBar);
-        progressBar.style.width = `${total}%`;
-    }
-}
-
-setReward();
-
-function setReward() {
+document.addEventListener('DOMContentLoaded', () => {
     const gotItBtn = document.getElementById('gotIt-btn');
     const thankYou = document.getElementById('thankYou-page');
     const rewardButtons = document.querySelectorAll('.reward-btn');
 
     let hasExecuted = false;
 
-    rewardButtons.forEach(btn => {
-        btn.addEventListener('click', (event) => {
-            thankYou.classList.remove('hidden');
-            overlay.classList.remove('hidden');
-            console.log('Clicked button:', event.target);
-        });
-    });
+    function backThisProject() {
+        console.log("Back This Project activated!");
+        return true; // Simulating the function returning true when activated
+    }
 
-
-    document.addEventListener("DOMContentLoaded", function () {
-        if (!gotItBtn.length) {
-            gotItBtn.addEventListener('click', () => {
-                thankYou.classList.add('hidden');
-                overlay.classList.add('hidden');
-            });
-        }
-    }, 100);
-
-    if (!backThisProject) {
+    if (backThisProject() && !hasExecuted) {
         rewardButtons.forEach(btn => {
-            btn.removeEventListener('click', setReward);
-        });
-    }  else if (backThisProject && !hasExecuted) {
-        rewardButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                setReward();
+            btn.addEventListener("click", (event) => {
+                console.log("Clicked button:", event.target);
+                thankYou.classList.remove("hidden");
+                overlay.classList.remove("hidden");
                 hasExecuted = true;
-            });
+            }); // Ensures it runs only once per button
         });
-        console.log('leave');
-        //setReward();
-    } 
-}
+
+        console.log("leave");
+    }
+
+    if (gotItBtn) {
+        gotItBtn.addEventListener("click", () => {
+            thankYou.classList.add("hidden");
+            overlay.classList.add("hidden");
+        });
+    }
+});
+
 
 // Helper function for number formatting
 function helperFunction(result) {
